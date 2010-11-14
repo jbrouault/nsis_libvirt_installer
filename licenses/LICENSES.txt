@@ -31,7 +31,7 @@ License files included
  + libportablexdr-0.dll
       + GPL 2 + LGPL 2.1: from the source tarball download
 
- + libvirt-0.dll, virsh.exe
+ + libvirt-0.dll, libvirt-qemu-0.dll, virsh.exe
       + LGPL 2.1: from the source tarball download
 
  + libxml2-2.dll
@@ -43,9 +43,3 @@ License files included
           + Downloaded the license files from:
           + ftp://sourceware.org/pub/pthreads-win32/sources/pthreads-w32-2-8-0-release/COPYING
           + ftp://sourceware.org/pub/pthreads-win32/sources/pthreads-w32-2-8-0-release/COPYING.LIB
-
- + libvirt-qemu-0.dll
-      + LGPL 2.1
-      + BUT, http://wiki.qemu.org/License in unclear about which bits are covered by what for us
-      + Should we consider this GPL, or LGPL licensed?
-      + To Be Determined.

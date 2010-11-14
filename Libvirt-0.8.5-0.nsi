@@ -1,15 +1,20 @@
-; Application name
+; Package wide variables
 !define APPNAME "Libvirt"
 !define APPVERSION "0.8.5"
 !define PACKAGEREVISION "0"
-!define PUBLISHER "Libvirt.org Community"
+!define PUBLISHER "The libvirt.org Community"
 !define HOMEPAGE "http://www.libvirt.org"
+
+; Have the base directories for things as variables, for flexibility
+!define BUILD_DIR "C:\build"
+!define MSYS_SETUP_REPO_DIR "${BUILD_DIR}\msys_setup"
+!define INSTALLER_REPO_DIR "${BUILD_DIR}\nsis_libvirt_installer"
 
 ; Main Install settings
 Name "${APPNAME} ${APPVERSION}"
 InstallDir "$PROGRAMFILES\Libvirt"
 InstallDirRegKey HKLM "Software\${APPNAME}" ""
-OutFile "..\git_repos\${APPNAME}-${APPVERSION}-${PACKAGEREVISION}.exe"
+OutFile "${BUILD_DIR}\${APPNAME}-${APPVERSION}-${PACKAGEREVISION}.exe"
 
 ; Modern interface settings
 !include "MUI.nsh"
@@ -17,7 +22,7 @@ OutFile "..\git_repos\${APPNAME}-${APPVERSION}-${PACKAGEREVISION}.exe"
 !define MUI_ABORTWARNING
 
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\git_repos\msys_setup\msys\gather\libvirt\licences\libvirt-license.txt"
+!insertmacro MUI_PAGE_LICENSE "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\licences\libvirt-license.txt"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -37,22 +42,61 @@ Section "Virsh" Section1
 
 	; Set Section Files and Shortcuts
 	SetOutPath "$INSTDIR\bin\"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\iconv.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\intl.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libgcrypt-11.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libgnutls-26.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libgpg-error-0.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libportablexdr-0.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libtasn1-3.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libvirt-0.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libvirt-qemu-0.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\libxml2-2.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\pthreadGC2.dll"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\virsh.exe"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\bin\zlib1.dll"
-	;CreateShortCut "$DESKTOP\Virsh.lnk" "$INSTDIR\bin\virsh.exe"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\iconv.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\intl.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libgcrypt-11.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libgnutls-26.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libgpg-error-0.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libportablexdr-0.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libtasn1-3.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libvirt-0.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libvirt-qemu-0.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libxml2-2.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\pthreadGC2.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\virsh.exe"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\zlib1.dll"
+	
+	; License files
+	SetOutPath "$INSTDIR\licenses\"
+	File "${INSTALLER_REPO_DIR}\licenses\LICENSES.txt"
+	SetOutPath "$INSTDIR\licenses\iconv.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\iconv.dll\COPYING.LIB"
+	SetOutPath "$INSTDIR\licenses\intl.dll_gettext-runtime\"
+	File "${INSTALLER_REPO_DIR}\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.0"
+	File "${INSTALLER_REPO_DIR}\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.1"
+	SetOutPath "$INSTDIR\licenses\libgcrypt-11.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libgcrypt-11.dll\lgpl-2.1.txt"
+	SetOutPath "$INSTDIR\licenses\libgnutls-26.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libgnutls-26.dll\lgpl-2.1.txt"
+	SetOutPath "$INSTDIR\licenses\libgpg-error-0.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libgpg-error-0.dll\COPYING"
+	File "${INSTALLER_REPO_DIR}\licenses\libgpg-error-0.dll\COPYING.LIB"
+	SetOutPath "$INSTDIR\licenses\libportablexdr-0.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libportablexdr-0.dll\COPYING"
+	File "${INSTALLER_REPO_DIR}\licenses\libportablexdr-0.dll\COPYING.LIB"
+	SetOutPath "$INSTDIR\licenses\libtasn1-3.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libtasn1-3.dll\lgpl-2.1.txt"
+	SetOutPath "$INSTDIR\licenses\libvirt-0.8.5\"
+	File "${INSTALLER_REPO_DIR}\licenses\libvirt-0.8.5\COPYING.LIB"
+	SetOutPath "$INSTDIR\licenses\libxml2-2.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\COPYING"
+	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\hash.c"
+	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\list.c"
+	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\trio.c"
+	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\trionan.c"
+	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\triostr.c"
+	SetOutPath "$INSTDIR\licenses\pthreadGC2.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\pthreadGC2.dll\COPYING"
+	File "${INSTALLER_REPO_DIR}\licenses\pthreadGC2.dll\COPYING.LIB"
+	SetOutPath "$INSTDIR\licenses\zlib1.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\zlib1.dll\zlib_license.txt"
+	
+	; It would probably be useful to create a batch file asking
+	; for the connection string, then launch virsh.exe using it
+	;CreateShortCut "$DESKTOP\Virsh.lnk" "$INSTDIR\bin\virsh.bat"
+	
 	CreateDirectory "$SMPROGRAMS\Libvirt"
-	;CreateShortCut "$SMPROGRAMS\Libvirt\Virsh.lnk" "$INSTDIR\bin\virsh.exe"
+	;CreateShortCut "$SMPROGRAMS\Libvirt\Virsh.lnk" "$INSTDIR\bin\virsh.bat"
 	CreateShortCut "$SMPROGRAMS\Libvirt\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 
 SectionEnd
@@ -64,14 +108,14 @@ Section "Development components" Section2
 
 	; Set Section Files and Shortcuts
 	SetOutPath "$INSTDIR\include\libvirt\"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\include\libvirt\libvirt-qemu.h"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\include\libvirt\libvirt.h"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\include\libvirt\virterror.h"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\include\libvirt\libvirt-qemu.h"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\include\libvirt\libvirt.h"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\include\libvirt\virterror.h"
 	SetOutPath "$INSTDIR\lib\"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\lib\libvirt-qemu.a"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\lib\libvirt-qemu.dll.a"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\lib\libvirt.a"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\lib\libvirt.dll.a"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\lib\libvirt-qemu.a"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\lib\libvirt-qemu.dll.a"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\lib\libvirt.a"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\lib\libvirt.dll.a"
 
 SectionEnd
 
@@ -82,8 +126,8 @@ Section "Python bindings" Section3
 
 	; Set Section Files and Shortcuts
 	SetOutPath "$INSTDIR\python\"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\python\libvirt.py"
-	File "..\git_repos\msys_setup\msys\gather\libvirt\python\libvirtmod.pyd"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\python\libvirt.py"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\python\libvirtmod.pyd"
 
 SectionEnd
 
@@ -136,6 +180,29 @@ Section Uninstall
 	Delete "$INSTDIR\bin\virsh.exe"
 	Delete "$INSTDIR\bin\zlib1.dll"
 
+	; Clean up license files
+	Delete "$INSTDIR\licenses\LICENSES.txt"
+	Delete "$INSTDIR\licenses\iconv.dll\COPYING.LIB"
+	Delete "$INSTDIR\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.0"
+	Delete "$INSTDIR\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.1"
+	Delete "$INSTDIR\licenses\libgcrypt-11.dll\lgpl-2.1.txt"
+	Delete "$INSTDIR\licenses\libgnutls-26.dll\lgpl-2.1.txt"
+	Delete "$INSTDIR\licenses\libgpg-error-0.dll\COPYING"
+	Delete "$INSTDIR\licenses\libgpg-error-0.dll\COPYING.LIB"
+	Delete "$INSTDIR\licenses\libportablexdr-0.dll\COPYING"
+	Delete "$INSTDIR\licenses\libportablexdr-0.dll\COPYING.LIB"
+	Delete "$INSTDIR\licenses\libtasn1-3.dll\lgpl-2.1.txt"
+	Delete "$INSTDIR\licenses\libvirt-0.8.5\COPYING.LIB"
+	Delete "$INSTDIR\licenses\libxml2-2.dll\COPYING"
+	Delete "$INSTDIR\licenses\libxml2-2.dll\hash.c"
+	Delete "$INSTDIR\licenses\libxml2-2.dll\list.c"
+	Delete "$INSTDIR\licenses\libxml2-2.dll\trio.c"
+	Delete "$INSTDIR\licenses\libxml2-2.dll\trionan.c"
+	Delete "$INSTDIR\licenses\libxml2-2.dll\triostr.c"
+	Delete "$INSTDIR\licenses\pthreadGC2.dll\COPYING"
+	Delete "$INSTDIR\licenses\pthreadGC2.dll\COPYING.LIB"
+	Delete "$INSTDIR\licenses\zlib1.dll\zlib_license.txt"
+
 	; Clean up Development components
 	Delete "$INSTDIR\include\libvirt\libvirt-qemu.h"
 	Delete "$INSTDIR\include\libvirt\libvirt.h"
@@ -151,6 +218,18 @@ Section Uninstall
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\Libvirt"
+	RMDir "$INSTDIR\licenses\zlib1.dll\"
+	RMDir "$INSTDIR\licenses\pthreadGC2.dll\"
+	RMDir "$INSTDIR\licenses\libxml2-2.dll\"
+	RMDir "$INSTDIR\licenses\libvirt-0.8.5\"
+	RMDir "$INSTDIR\licenses\libtasn1-3.dll\"
+	RMDir "$INSTDIR\licenses\libportablexdr-0.dll\"
+	RMDir "$INSTDIR\licenses\libgpg-error-0.dll\"
+	RMDir "$INSTDIR\licenses\libgnutls-26.dll\"
+	RMDir "$INSTDIR\licenses\libgcrypt-11.dll\"
+	RMDir "$INSTDIR\licenses\intl.dll_gettext-runtime\"
+	RMDir "$INSTDIR\licenses\iconv.dll\"
+	RMDir "$INSTDIR\licenses\"
 	RMDir "$INSTDIR\python\"
 	RMDir "$INSTDIR\lib\"
 	RMDir "$INSTDIR\include\libvirt\"

@@ -1,0 +1,51 @@
+License files included
+**********************
+
+ + iconv.dll
+      + v 1.9.1 of iconv
+      + LGPL 2: http://git.savannah.gnu.org/cgit/libiconv.git/tree/COPYING.LIB?id=v1.9.1
+
+ + libgcrypt-11.dll
+      + LGPL 2.1: http://www.gnupg.org/documentation/manuals/gcrypt/Library-Copying.html#Library-Copying
+      + Got the plain text version from: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+
+ + libgnutls-26.dll
+      + v 2.10.1
+      + LGPL 2.1: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+ + libgpg-error-0.dll
+      + LGPL 2.1: from the source tarball download
+
+ + libtasn1-3.dll
+      + LGPL 2.1: from the source tarball download
+
+ + zlib1.dll
+      + v 1.2.4 of zlib
+      + Seems BSD style: http://www.gzip.org/zlib/zlib_license.html
+      + License was embedded in zlib.h, from the source tarball download
+
+ + intl.dll
+      + The actual project is GNU gettext, and this is part of the gettext-runtime
+      + LGPL 2 + 2.1: from the source tarball download
+
+ + libportablexdr-0.dll
+      + GPL 2 + LGPL 2.1: from the source tarball download
+
+ + libvirt-0.dll, virsh.exe
+      + LGPL 2.1: from the source tarball download
+
+ + libxml2-2.dll
+     + Has a main license file, with hash.c, list.c, trio.c, trionan.c, and triostr.c
+       all having their own copyright embedded in the files
+
+ + pthreadGC2.dll
+      + LGPL 2.1: http://sourceware.org/pthreads-win32/copying.html
+          + Downloaded the license files from:
+          + ftp://sourceware.org/pub/pthreads-win32/sources/pthreads-w32-2-8-0-release/COPYING
+          + ftp://sourceware.org/pub/pthreads-win32/sources/pthreads-w32-2-8-0-release/COPYING.LIB
+
+ + libvirt-qemu-0.dll
+      + LGPL 2.1
+      + BUT, http://wiki.qemu.org/License in unclear about which bits are covered by what for us
+      + Should we consider this GPL, or LGPL licensed?
+      + To Be Determined.

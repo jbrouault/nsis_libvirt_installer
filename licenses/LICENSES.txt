@@ -5,6 +5,9 @@ License files included
       + v 1.9.1 of iconv
       + LGPL 2: http://git.savannah.gnu.org/cgit/libiconv.git/tree/COPYING.LIB?id=v1.9.1
 
+ + libcurl?
+      + ???
+
  + libgcrypt-11.dll
       + LGPL 2.1: http://www.gnupg.org/documentation/manuals/gcrypt/Library-Copying.html#Library-Copying
       + Got the plain text version from: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
@@ -37,9 +40,3 @@ License files included
  + libxml2-2.dll
      + Has a main license file, with hash.c, list.c, trio.c, trionan.c, and triostr.c
        all having their own copyright embedded in the files
-
- + pthreadGC2.dll
-      + LGPL 2.1: http://sourceware.org/pthreads-win32/copying.html
-          + Downloaded the license files from:
-          + ftp://sourceware.org/pub/pthreads-win32/sources/pthreads-w32-2-8-0-release/COPYING
-          + ftp://sourceware.org/pub/pthreads-win32/sources/pthreads-w32-2-8-0-release/COPYING.LIB

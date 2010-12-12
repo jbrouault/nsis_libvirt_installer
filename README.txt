@@ -24,8 +24,8 @@ The libvirt NSIS installer repo is located at:
 Caveats
 *******
 
- + This is compiled in 32-bit mode only, due to the use of msys.  It should
-   work on both 32-bit and 64-bit versions of Windows. (still to be tested)
+ + This is compiled in 32-bit mode only, due to the use of msys.  It works
+   on both 32-bit and 64-bit versions of Windows.
 
  + This is a fairly new effort, so is still in fairly rough form.  Feel
    welcome to try things out, but it's definitely not yet "production"

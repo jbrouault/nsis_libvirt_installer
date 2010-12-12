@@ -5,8 +5,9 @@ License files included
       + v 1.9.1 of iconv
       + LGPL 2: http://git.savannah.gnu.org/cgit/libiconv.git/tree/COPYING.LIB?id=v1.9.1
 
- + libcurl?
-      + ???
+ + libcurl-4.dll
+      + Seems BSD style
+      + License file from the source tarball download
 
  + libgcrypt-11.dll
       + LGPL 2.1: http://www.gnupg.org/documentation/manuals/gcrypt/Library-Copying.html#Library-Copying

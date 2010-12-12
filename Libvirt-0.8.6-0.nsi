@@ -44,6 +44,7 @@ Section "Virsh" Section1
 	SetOutPath "$INSTDIR\bin\"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\iconv.dll"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\intl.dll"
+	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libcurl-4.dll"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libgcrypt-11.dll"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libgnutls-26.dll"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libgpg-error-0.dll"
@@ -168,6 +169,7 @@ Section Uninstall
 	; Clean up Virsh
 	Delete "$INSTDIR\bin\iconv.dll"
 	Delete "$INSTDIR\bin\intl.dll"
+	Delete "$INSTDIR\bin\libcurl-4.dll"
 	Delete "$INSTDIR\bin\libgcrypt-11.dll"
 	Delete "$INSTDIR\bin\libgnutls-26.dll"
 	Delete "$INSTDIR\bin\libgpg-error-0.dll"
@@ -182,6 +184,7 @@ Section Uninstall
 
 	; Clean up license files
 	Delete "$INSTDIR\licenses\LICENSES.txt"
+	Delete "$INSTDIR\licenses\libvirt-0.8.6\COPYING.LIB"
 	Delete "$INSTDIR\licenses\iconv.dll\COPYING.LIB"
 	Delete "$INSTDIR\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.0"
 	Delete "$INSTDIR\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.1"
@@ -229,6 +232,7 @@ Section Uninstall
 	RMDir "$INSTDIR\licenses\libgcrypt-11.dll\"
 	RMDir "$INSTDIR\licenses\intl.dll_gettext-runtime\"
 	RMDir "$INSTDIR\licenses\iconv.dll\"
+	RMDir "$INSTDIR\licenses\libvirt-0.8.6\"
 	RMDir "$INSTDIR\licenses\"
 	RMDir "$INSTDIR\python\"
 	RMDir "$INSTDIR\lib\"

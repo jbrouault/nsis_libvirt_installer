@@ -57,14 +57,12 @@ Section "Virsh" Section1
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\zlib1.dll"
 	
 	; License files
-	
-	
-	;Need to look at including the libcurl license
-	
 	SetOutPath "$INSTDIR\licenses\"
 	File "${INSTALLER_REPO_DIR}\licenses\LICENSES.txt"
 	SetOutPath "$INSTDIR\licenses\iconv.dll\"
 	File "${INSTALLER_REPO_DIR}\licenses\iconv.dll\COPYING.LIB"
+	SetOutPath "$INSTDIR\licenses\libcurl-4.dll\"
+	File "${INSTALLER_REPO_DIR}\licenses\libcurl-4.dll\COPYING"
 	SetOutPath "$INSTDIR\licenses\intl.dll_gettext-runtime\"
 	File "${INSTALLER_REPO_DIR}\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.0"
 	File "${INSTALLER_REPO_DIR}\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.1"
@@ -186,6 +184,7 @@ Section Uninstall
 	Delete "$INSTDIR\licenses\LICENSES.txt"
 	Delete "$INSTDIR\licenses\libvirt-0.8.6\COPYING.LIB"
 	Delete "$INSTDIR\licenses\iconv.dll\COPYING.LIB"
+	Delete "$INSTDIR\licenses\libcurl-4.dll\COPYING"
 	Delete "$INSTDIR\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.0"
 	Delete "$INSTDIR\licenses\intl.dll_gettext-runtime\COPYING.LIB-2.1"
 	Delete "$INSTDIR\licenses\libgcrypt-11.dll\lgpl-2.1.txt"
@@ -231,6 +230,7 @@ Section Uninstall
 	RMDir "$INSTDIR\licenses\libgnutls-26.dll\"
 	RMDir "$INSTDIR\licenses\libgcrypt-11.dll\"
 	RMDir "$INSTDIR\licenses\intl.dll_gettext-runtime\"
+	RMDir "$INSTDIR\licenses\libcurl-4.dll\"
 	RMDir "$INSTDIR\licenses\iconv.dll\"
 	RMDir "$INSTDIR\licenses\libvirt-0.8.6\"
 	RMDir "$INSTDIR\licenses\"

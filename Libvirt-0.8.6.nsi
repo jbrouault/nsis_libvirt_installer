@@ -16,6 +16,10 @@ InstallDir "$PROGRAMFILES\Libvirt"
 InstallDirRegKey HKLM "Software\${APPNAME}" ""
 OutFile "${BUILD_DIR}\${APPNAME}-${APPVERSION}-${PACKAGEREVISION}.exe"
 
+; Product the smallest possible size installer
+; (slightly increases time to create installer though)
+SetCompressor /SOLID lzma
+
 ; Modern interface settings
 !include "MUI.nsh"
 

@@ -20,7 +20,8 @@ Connecting to VMware ESX or vSphere
 ***********************************
 
 Details on the capabilities and connection string syntax
-can be found online:
+used for connecting to VMware ESX and vSphere can be found
+online here:
 
   http://libvirt.org/drvesx.html
 
@@ -28,21 +29,42 @@ can be found online:
 TLS Certificates
 ****************
 
-TLS certificates need to be generated prior to connecting
-to either QEMU instances with TLS, or connecting to VMware
+TLS certificates are needed prior to connecting to either
+QEMU instances with TLS, or connecting to VMware
 ESX/vSphere.
 
-The CA Certificate file must be placed in:
+Information on generating TLS certificates can be found
+here:
+
+  http://wiki.libvirt.org/page/TLSSetup
+
+These instructions are for *nix, and have not yet been
+adapted for Windows.  You'll need to figure out the
+Windows equivalents until that's done (sorry).  If you
+can help us out with this, that would be really welcome.
+
+The locations of the TLS certificates and key file are
+hard coded, rather than being configurable.
+
+The Certificate Authority (CA) certificate file must be
+placed in:
 
   %APPDATA%\libvirt\pki\CA\cacert.pem
 
 The Client certificate file must be placed in:
 
-  %APPDATA%\ ...
+  %APPDATA%\libvirt\pki\libvirt\clientcert.pem
 
 The Client key file must be placed in:
 
-  %APPDATA%\ ...
+  %APPDATA%\libvirt\pki\libvirt\private\clientkey.pem
+
+On an example Windows 7 x64 system here, this resolves to
+these paths:
+
+  C:\Users\someuser\AppData\Roaming\libvirt\pki\CA\cacert.pem
+  C:\Users\someuser\AppData\Roaming\libvirt\pki\libvirt\clientcert.pem
+  C:\Users\someuser\AppData\Roaming\libvirt\pki\libvirt\private\clientkey.pem
 
 
 Existing problems with this installer we know about

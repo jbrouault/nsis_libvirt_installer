@@ -1,7 +1,7 @@
 ; Package wide variables
 !define APPNAME "Libvirt"
 !define APPVERSION "0.8.6"
-!define PACKAGEREVISION "0"
+!define PACKAGEREVISION "1"
 !define PUBLISHER "The libvirt.org Community"
 !define HOMEPAGE "http://www.libvirt.org"
 
@@ -40,6 +40,11 @@ Section "Virsh" Section1
 	; Set Section properties
 	SetOverwrite on
 
+	; The logo and README file
+	SetOutPath "$INSTDIR\"
+	File "${INSTALLER_REPO_DIR}\libvirt_logo_48x48.ico"
+	File "${INSTALLER_REPO_DIR}\installer_readme\README.txt"
+
 	; Set Section Files and Shortcuts
 	SetOutPath "$INSTDIR\bin\"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\iconv.dll"
@@ -55,6 +60,17 @@ Section "Virsh" Section1
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\libxml2-2.dll"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\virsh.exe"
 	File "${MSYS_SETUP_REPO_DIR}\msys\gather\libvirt\bin\zlib1.dll"
+	File "${INSTALLER_REPO_DIR}\virsh-launcher.bat"
+
+	; Just a note, in case we want to give a desktop shortcut option
+	; at some point
+	;CreateShortCut "$DESKTOP\Virsh.lnk" "$INSTDIR\bin\virsh-launcher.bat"
+	
+	SetOutPath "$INSTDIR\bin\"
+	CreateDirectory "$SMPROGRAMS\Libvirt"
+	CreateShortCut "$SMPROGRAMS\Libvirt\Readme.lnk" "$INSTDIR\README.txt"
+	CreateShortCut "$SMPROGRAMS\Libvirt\Virsh.lnk" "$INSTDIR\bin\virsh-launcher.bat"
+	CreateShortCut "$SMPROGRAMS\Libvirt\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 	
 	; License files
 	SetOutPath "$INSTDIR\licenses\"
@@ -89,15 +105,6 @@ Section "Virsh" Section1
 	File "${INSTALLER_REPO_DIR}\licenses\libxml2-2.dll\triostr.c"
 	SetOutPath "$INSTDIR\licenses\zlib1.dll\"
 	File "${INSTALLER_REPO_DIR}\licenses\zlib1.dll\zlib_license.txt"
-	
-	; It would probably be useful to create a batch file asking
-	; for the connection string, then launch virsh.exe using it
-	;CreateShortCut "$DESKTOP\Virsh.lnk" "$INSTDIR\bin\virsh.bat"
-	
-	CreateDirectory "$SMPROGRAMS\Libvirt"
-	;CreateShortCut "$SMPROGRAMS\Libvirt\Virsh.lnk" "$INSTDIR\bin\virsh.bat"
-	CreateShortCut "$SMPROGRAMS\Libvirt\Uninstall.lnk" "$INSTDIR\uninstall.exe"
-
 SectionEnd
 
 Section "Development components" Section2
@@ -134,6 +141,7 @@ Section -FinishSection
 
 	WriteRegStr HKLM "Software\${APPNAME}" "" "$INSTDIR"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$INSTDIR\libvirt_logo_48x48.ico"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${APPVERSION}-${PACKAGEREVISION}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "${PUBLISHER}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "${HOMEPAGE}"
@@ -158,10 +166,16 @@ Section Uninstall
 
 	; Delete self
 	Delete "$INSTDIR\uninstall.exe"
+	
+	; Delete logo
+	Delete "$INSTDIR\libvirt_logo_48x48.ico"
+
+	; Delete README file
+	Delete "$INSTDIR\README.txt"
 
 	; Delete Shortcuts
-;	Delete "$DESKTOP\Virsh.lnk"
-;	Delete "$SMPROGRAMS\Libvirt\Virsh.lnk"
+	Delete "$DESKTOP\Virsh.lnk"
+	Delete "$SMPROGRAMS\Libvirt\Virsh.lnk"
 	Delete "$SMPROGRAMS\Libvirt\Uninstall.lnk"
 
 	; Clean up Virsh
@@ -178,6 +192,7 @@ Section Uninstall
 	Delete "$INSTDIR\bin\libxml2-2.dll"
 	Delete "$INSTDIR\bin\pthreadGC2.dll"
 	Delete "$INSTDIR\bin\virsh.exe"
+	Delete "$INSTDIR\bin\virsh-launcher.bat"
 	Delete "$INSTDIR\bin\zlib1.dll"
 
 	; Clean up license files

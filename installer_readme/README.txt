@@ -22,8 +22,8 @@ Connection types
 
 These connection types are known to work:
 
- + QEMU with direct TCP (qemu+tcp://)
  + QEMU with TLS (qemu+tls://)
+ + QEMU with direct TCP (qemu+tcp://)
  + VMware ESX (esx://)
  + VMware VPX (vpx://)
 
@@ -34,6 +34,10 @@ These connection types are known not to work:
 All other connection types may or may not work, and haven't
 been tested.  Please let us know either the results (either
 way) if you do. :)
+
+WARNING - The qemu+tcp:// connection type passes all traffic
+without encryption.  This is a security hazard, and should
+*not* be used in security sensitive environments.
 
 
 Connecting to VMware ESX or vSphere

@@ -2,18 +2,38 @@ README file for libvirt, the virtualisation library
 ***************************************************
 
 Home page: http://www.libvirt.org
+Contact information: http://www.libvirt.org/contact.html
 
 
 Important!
 **********
 
 This is an early stage *experimental* MS Windows installer
-for libvirt, being improved over time by the Libvirt
-Community.
+for the libvirt client libraries, being improved over time
+by the Libvirt Community.
 
 This installer is not production ready, unlike libvirt
 itself.  Do not use it for anything important.  You have
 been warned. :)
+
+
+Connection types
+****************
+
+These connection types are known to work:
+
+ + QEMU with direct TCP (qemu+tcp://)
+ + QEMU with TLS (qemu+tls://)
+ + VMware ESX (esx://)
+ + VMware VPX (vpx://)
+
+These connection types are known not to work:
+
+ + QEMU with SSH (qemu+ssh://)
+
+All other connection types may or may not work, and haven't
+been tested.  Please let us know either the results (either
+way) if you do. :)
 
 
 Connecting to VMware ESX or vSphere

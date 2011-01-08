@@ -35,6 +35,10 @@ All other connection types may or may not work, and haven't
 been tested.  Please let us know either the results (either
 way) if you do. :)
 
+Special note - Support for VirtualBox *on windows* was added
+in libvirt 0.8.7, so reports on success and failure if you're
+using that would be really appreciated.
+
 WARNING - The qemu+tcp:// connection type passes all traffic
 without encryption.  This is a security hazard, and should
 *not* be used in security sensitive environments.
@@ -114,16 +118,6 @@ subsequent versions of the installer (assistance welcomed):
    time
 
    Not sure why yet.  Needs to be investigated.
-
-
- + Libvirt dll files should be added to path
-
-   At the moment, anything that needs to use the libvirt dll
-   files (ie the C# bindings) won't automatically find them.
-   This can be worked around by copying the dll files into
-   the same directory as whatever needs them, but is probably
-   not an optimal approach.  There might be a better way and
-   needs to be investigated first.
 
 
 Reporting bugs

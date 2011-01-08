@@ -6,7 +6,7 @@ Build notes
 The directory structure used for the build and packaging process is:
 
   C:\build                          <-- base dir
-  C:\build\Libvirt-0.8.6-0.exe      <-- packaged file output location
+  C:\build\Libvirt-x.x.x-y.exe      <-- packaged file output location
   C:\build\nsis_libvirt_installer\  <-- git clone of libvirt NSIS installer
                                         repo
   C:\build\msys_setup\              <-- git clone of Matthias Bolte's

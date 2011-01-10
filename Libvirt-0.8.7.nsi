@@ -1,7 +1,7 @@
 ; Package wide variables
 !define APPNAME "Libvirt"
 !define APPVERSION "0.8.7"
-!define PACKAGEREVISION "0"
+!define PACKAGEREVISION "1"
 !define PUBLISHER "The libvirt.org Community"
 !define HOMEPAGE "http://www.libvirt.org"
 

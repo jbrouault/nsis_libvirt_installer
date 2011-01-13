@@ -1,7 +1,7 @@
 ; Package wide variables
 !define APPNAME "Libvirt"
 !define APPVERSION "0.8.7"
-!define PACKAGEREVISION "1"
+!define PACKAGEREVISION "2"
 !define PUBLISHER "The libvirt.org Community"
 !define HOMEPAGE "http://www.libvirt.org"
 
@@ -49,7 +49,7 @@ Section "Virsh" Section1
 
 	; The logo and README file
 	SetOutPath "$INSTDIR\"
-	File "${INSTALLER_REPO_DIR}\libvirt_logo_48x48.ico"
+	File "${INSTALLER_REPO_DIR}\libvirt_win_icon_48x48.ico"
 	File "${INSTALLER_REPO_DIR}\installer_readme\README.txt"
 
 	; Set Section Files and Shortcuts
@@ -151,7 +151,7 @@ Section -FinishSection
 
 	WriteRegStr HKLM "Software\${APPNAME}" "" "$INSTDIR"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$INSTDIR\libvirt_logo_48x48.ico"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$INSTDIR\libvirt_win_icon_48x48.ico"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${APPVERSION}-${PACKAGEREVISION}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "${PUBLISHER}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "${HOMEPAGE}"
@@ -178,7 +178,7 @@ Section Uninstall
 	Delete "$INSTDIR\uninstall.exe"
 	
 	; Delete logo
-	Delete "$INSTDIR\libvirt_logo_48x48.ico"
+	Delete "$INSTDIR\libvirt_win_icon_48x48.ico"
 
 	; Delete README file
 	Delete "$INSTDIR\README.txt"

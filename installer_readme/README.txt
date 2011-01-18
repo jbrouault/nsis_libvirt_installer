@@ -47,19 +47,19 @@ without encryption.  This is a security hazard, and should
 Connecting to VMware ESX or vSphere
 ***********************************
 
-Details on the capabilities and connection string syntax
-used for connecting to VMware ESX and vSphere can be found
-online here:
+Details on the capabilities, certificates, and connection
+string syntax used for connecting to VMware ESX and vSphere
+can be found online here:
 
   http://libvirt.org/drvesx.html
 
 
-TLS Certificates
-****************
+Transport Layer Security (TLS) Certificates
+*******************************************
 
-TLS certificates are needed prior to connecting to either
-QEMU instances with TLS, or connecting to VMware
-ESX/vSphere.
+TLS certificates need to have been created and placed in
+the correct locations, before you will be able to connect
+to QEMU servers over TLS.
 
 Information on generating TLS certificates can be found
 here:
@@ -71,8 +71,8 @@ adapted for Windows.  You'll need to figure out the
 Windows equivalents until that's done (sorry).  If you
 can help us out with this, that would be really welcome.
 
-The locations of the TLS certificates and key file are
-hard coded, rather than being configurable.
+The locations of the TLS certificates and key file on
+Windows are hard coded, rather than being configurable.
 
 The Certificate Authority (CA) certificate file must be
 placed in:

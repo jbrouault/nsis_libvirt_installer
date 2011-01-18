@@ -113,11 +113,19 @@ Section "Virsh" Section1
 	SetOutPath "$INSTDIR\licenses\zlib1.dll\"
 	File "${INSTALLER_REPO_DIR}\licenses\zlib1.dll\zlib_license.txt"
 
-	; Append the bin directory to the end of the system PATH variable
-	${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\bin\"
 SectionEnd
 
-Section "Development components" Section2
+Section "Update system path?" Section2
+
+	; Set Section properties
+	SetOverwrite on
+
+	; Append the bin directory to the end of the system PATH variable
+	${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\bin\"
+
+SectionEnd
+
+Section "Development components" Section3
 
 	; Set Section properties
 	SetOverwrite on
@@ -135,7 +143,7 @@ Section "Development components" Section2
 
 SectionEnd
 
-Section "Python bindings" Section3
+Section "Python bindings" Section4
 
 	; Set Section properties
 	SetOverwrite on
@@ -162,9 +170,10 @@ SectionEnd
 
 ; Modern install component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section1} "Command line utility for managing virtual machines using libvirt"
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Libvirt development headers and library files"
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section3} "Python bindings"
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section1} "A command line utility for managing virtual machines using libvirt"
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Adds the libvirt executable folder to your system path"
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section3} "The Libvirt development headers and library files"
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section4} "Python bindings for Libvirt"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;Uninstall section

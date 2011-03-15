@@ -114,12 +114,6 @@ subsequent versions of the installer (assistance welcomed):
    it first or ask for a new installation location.
 
 
- + Start menu shortcuts aren't being removed at uninstall
-   time
-
-   Not sure why yet.  Needs to be investigated.
-
-
 Reporting bugs
 **************
 
